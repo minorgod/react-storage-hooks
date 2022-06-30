@@ -24,7 +24,7 @@ it('returns default state', () => {
 
 it('returns default state (lazy initialization)', () => {
   const { result } = renderHook(() =>
-    useStorageReducer(storageLikeObject, 'key', reducer, 0, value => ({
+    useStorageReducer(storageLikeObject, 'key', reducer, 0, (value) => ({
       value,
     }))
   );

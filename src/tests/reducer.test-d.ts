@@ -36,7 +36,7 @@ const [otherState, otherDispatch] = useStorageReducer(
   'key',
   reducer,
   0,
-  value => ({ value })
+  (value) => ({ value })
 );
 expectType<State>(otherState);
 expectType<Dispatch<Action>>(otherDispatch);
@@ -57,5 +57,7 @@ expectError(() =>
   useStorageReducer(localStorage, 'key', reducer, { value: 'value' })
 );
 expectError(() =>
-  useStorageReducer(localStorage, 'key', reducer, 'value', value => ({ value }))
+  useStorageReducer(localStorage, 'key', reducer, 'value', (value) => ({
+    value,
+  }))
 );

@@ -49,7 +49,7 @@ describe('initialization', () => {
 
   it('returns default state when storage empty and writes it to storage (lazy initialization)', () => {
     const { result } = renderHook(() =>
-      useStorageReducer(localStorage, 'key', reducer, 0, value => ({ value }))
+      useStorageReducer(localStorage, 'key', reducer, 0, (value) => ({ value }))
     );
 
     const [state] = result.current;
@@ -143,7 +143,7 @@ describe('updates', () => {
     localStorage.setItem('key', '{"value":1}');
 
     const { result, rerender } = renderHook(
-      defaultState =>
+      (defaultState) =>
         useStorageReducer(localStorage, 'key', reducer, defaultState),
       { initialProps: { value: 0 } }
     );
@@ -155,7 +155,7 @@ describe('updates', () => {
 
   it('returns same state when storage empty and default state changes', () => {
     const { result, rerender } = renderHook(
-      defaultState =>
+      (defaultState) =>
         useStorageReducer(localStorage, 'key', reducer, defaultState),
       { initialProps: { value: 0 } }
     );
@@ -206,7 +206,7 @@ describe('resetting', () => {
     localStorage.setItem('new-key', '{"value":1}');
 
     const { result, rerender } = renderHook(
-      key => useStorageReducer(localStorage, key, reducer, { value: 0 }),
+      (key) => useStorageReducer(localStorage, key, reducer, { value: 0 }),
       {
         initialProps: 'key',
       }
@@ -221,7 +221,7 @@ describe('resetting', () => {
     localStorage.setItem('key', '{"value":1}');
 
     const { result, rerender } = renderHook(
-      key => useStorageReducer(localStorage, key, reducer, { value: 0 }),
+      (key) => useStorageReducer(localStorage, key, reducer, { value: 0 }),
       {
         initialProps: 'key',
       }
@@ -236,7 +236,7 @@ describe('resetting', () => {
     mockStorageErrorOnce(localStorage, 'setItem', 'Error message');
 
     const { result, rerender, waitForNextUpdate } = renderHook(
-      key => useStorageReducer(localStorage, key, reducer, { value: 0 }),
+      (key) => useStorageReducer(localStorage, key, reducer, { value: 0 }),
       { initialProps: 'key' }
     );
     const [, dispatch] = result.current;
@@ -257,7 +257,7 @@ describe('resetting', () => {
     localStorage.setItem('new-key', '{"value":2}');
 
     const { result, rerender } = renderHook(
-      key => useStorageReducer(localStorage, key, reducer, { value: 0 }),
+      (key) => useStorageReducer(localStorage, key, reducer, { value: 0 }),
       {
         initialProps: 'key',
       }

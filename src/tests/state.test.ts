@@ -149,7 +149,7 @@ describe('updates', () => {
     localStorage.setItem('key', '{"value":1}');
 
     const { result, rerender } = renderHook(
-      defaultState => useStorageState(localStorage, 'key', defaultState),
+      (defaultState) => useStorageState(localStorage, 'key', defaultState),
       { initialProps: { value: 0 } }
     );
     rerender({ value: 2 });
@@ -160,7 +160,7 @@ describe('updates', () => {
 
   it('returns same state when storage empty and default state changes', () => {
     const { result, rerender } = renderHook(
-      defaultState => useStorageState(localStorage, 'key', defaultState),
+      (defaultState) => useStorageState(localStorage, 'key', defaultState),
       { initialProps: { value: 0 } }
     );
     rerender({ value: 1 });
@@ -226,7 +226,7 @@ describe('resetting', () => {
     localStorage.setItem('new-key', '{"value":1}');
 
     const { result, rerender } = renderHook(
-      key => useStorageState(localStorage, key, { value: 0 }),
+      (key) => useStorageState(localStorage, key, { value: 0 }),
       {
         initialProps: 'key',
       }
@@ -241,7 +241,7 @@ describe('resetting', () => {
     localStorage.setItem('key', '1');
 
     const { result, rerender } = renderHook(
-      key => useStorageState(localStorage, key, { value: 0 }),
+      (key) => useStorageState(localStorage, key, { value: 0 }),
       {
         initialProps: 'key',
       }
@@ -256,7 +256,7 @@ describe('resetting', () => {
     localStorage.setItem('key', '{"value":1}');
 
     const { result, rerender } = renderHook(
-      key => useStorageState(localStorage, key),
+      (key) => useStorageState(localStorage, key),
       {
         initialProps: 'key',
       }
@@ -271,7 +271,7 @@ describe('resetting', () => {
     mockStorageErrorOnce(localStorage, 'setItem', 'Error message');
 
     const { result, rerender, waitForNextUpdate } = renderHook(
-      key => useStorageState(localStorage, key, { value: 0 }),
+      (key) => useStorageState(localStorage, key, { value: 0 }),
       { initialProps: 'key' }
     );
     const [, setState] = result.current;
@@ -292,7 +292,7 @@ describe('resetting', () => {
     localStorage.setItem('new-key', '{"value":2}');
 
     const { result, rerender } = renderHook(
-      key => useStorageState(localStorage, key, { value: 0 }),
+      (key) => useStorageState(localStorage, key, { value: 0 }),
       {
         initialProps: 'key',
       }
