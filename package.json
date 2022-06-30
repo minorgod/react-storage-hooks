@@ -40,7 +40,7 @@
   ],
   "author": "Ramón Guijarro <hola@soyguijarro.com>",
   "license": "MIT",
-  "repository": "https://github.com/soyguijarro/react-storage-hooks",
+  "repository": "https://github.com/minorgod/react-storage-hooks",
   "peerDependencies": {
     "react": ">=16.8.0"
   },
