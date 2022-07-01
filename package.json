@@ -40,7 +40,8 @@
   },
   "files": [
     "dist",
-    "dist/index.d.ts"
+    "dist/index.d.ts",
+    "src"
   ],
   "author": "Ramón Guijarro <hola@soyguijarro.com>",
   "license": "MIT",
